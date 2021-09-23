@@ -1,5 +1,5 @@
-const http = require('http');
-const server = http.createServer((req, res) => {
+const reqHand = (req,res) =>{
+const method = req.method;
     const url = req.url;
     if (url ==='/'){
         res.setHeader('Content-Type', 'text/html');
@@ -32,6 +32,11 @@ const server = http.createServer((req, res) => {
         res.setHeader('Location','/');
         res.end();
     }
+
+module.exports = {
+    handler : reqHand,
+    text : 'hello'
+}
     // Must send a html response of "no page found"
-});
+};
 server.listen(3000);
