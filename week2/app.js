@@ -17,8 +17,8 @@ app.get('/books' , (req, res , next) => {
     res.render('books' , {pageTitle: "Book",books: books});
 });
 
-app.post('add-book', (req, res , next) => {
-        books.push({name: req.body.bookname});
+app.post('/add-book', (req, res , next) => {
+    books.push({name: req.body.bookname});
     res.redirect('/books');
 });
 
