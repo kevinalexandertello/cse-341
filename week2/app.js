@@ -17,7 +17,7 @@ app.get('/' , (req , res, next) => {
 });
 
 app.get('/books' , (req, res , next) => {
-    res.render('books' , {pageTitle: "Book",books: books});
+    res.render('books' , {pageTitle: " Books",books: books});
 });
 
 app.post('/add-book', (req, res , next) => {
