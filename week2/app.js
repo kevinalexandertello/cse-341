@@ -2,9 +2,12 @@ const express = require('express');
 
 const app = express();
 const bodyParser = require('body-parser');
+const expressHbs = require('express-handlebars');
 
 const books = [];
-app.set('view engine','pug');
+
+app.engine('hbs' , expressHbs({defaultLayout: 'main-layout', extname: 'hbs'}));
+app.set('view engine','ejs');
 app.set('views', 'views');
 
 app.use(bodyParser.urlencoded({extended: false }));
