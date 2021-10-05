@@ -25,7 +25,7 @@ app.get('/books', (req, res, next) => {
 });
 
 app.post('/add-book', (req, res, next) => {
-  users.push({ name: req.body.bookname });
+  books.push({ name: req.body.bookname });
   res.redirect('/books');
 });
 
