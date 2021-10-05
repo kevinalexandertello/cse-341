@@ -1,28 +1,32 @@
 const express = require('express');
-
-const app = express();
 const bodyParser = require('body-parser');
 const expressHbs = require('express-handlebars');
 
-const books = [];
+const app = express();
 
-app.engine('hbs' , expressHbs({defaultLayout: 'main-layout', extname: 'hbs'}));
-app.set('view engine','ejs');
+const users = [];
+
+app.engine('hbs', expressHbs({ defaultLayout: 'main-layout', extname: 'hbs' }));
+app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-app.use(bodyParser.urlencoded({extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/' , (req , res, next) => {
-    res.render('index' , {pageTitle: 'Add-Book'});
+app.get('/', (req, res, next) => {
+  res.render('index', { pageTitle: 'Add User' });
 });
 
-app.get('/books' , (req, res , next) => {
-    res.render('books' , {pageTitle: " Books",books: books});
+app.get('/users', (req, res, next) => {
+  res.render('users', {
+    pageTitle: 'User',
+    users: users,
+    hasUsers: users.length > 0
+  });
 });
 
-app.post('/add-book', (req, res , next) => {
-    books.push({name: req.body.bookname});
-    res.redirect('/books');
+app.post('/add-user', (req, res, next) => {
+  users.push({ name: req.body.username });
+  res.redirect('/users');
 });
 
 app.listen(3000);
